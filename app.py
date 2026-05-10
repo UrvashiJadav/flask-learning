@@ -8,35 +8,13 @@ CORS(app)
 def rentem():
     return render_template('register.html')
 
-@app.route('/user', methods=['POST'])
-def user():
+@app.route('/LOGIN',methods=['GET'])
+def login_page():
+    return render_template('login.html')
 
-    data = request.get_json()
-
-    name = data.get('name')
-    email = data.get('email')
-
-    if not name or not name.strip():
-        response = {
-            "status": "error",
-            "message": "Invalid Name"
-        }
-        return jsonify(response)
-
-    if not email or not email.strip():
-        response = {
-            "status": "error",
-            "message": "Invalid Email"
-        }
-        return jsonify(response)
-
-    response = {
-        "status": "success",
-        "message": f"Hello {name}, request received successfully!"
-    }
-
-    return jsonify(response)
-
+@app.route('/home',methods=['GET'])
+def home_page():
+    return render_template('home.html')
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -75,7 +53,6 @@ def register():
 
     return jsonify(response)
 
-
 @app.route('/login', methods=['POST'])
 def login():
 
@@ -97,14 +74,12 @@ def login():
             "message": "Invalid Password"
         }
         return jsonify(response)
-
+    
     response = {
         "status": "success",
-        "message": f"Hello {username}, You're Successfully LOGGED IN!!"
+        "message": f"Hello {username}, You're Successfully REGISTERED!!"
     }
-
     return jsonify(response)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
