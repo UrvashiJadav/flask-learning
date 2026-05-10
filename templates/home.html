@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<p>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="msg"></h1>
+    <button id="logout" onclick="logout()"> Log Out</button>
+</body>
+<script>
+    let username = localStorage.getItem("username");
+    document.getElementById("msg").innerText = "Welcome," + username;
+
+    function logout(){
+        console.log("logout clicked");
+        localStorage.removeItem("username");
+        window.location.href = "/LOGIN";
+    }
+
+
+</script>
+</html>
