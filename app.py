@@ -8,6 +8,7 @@ CORS(app)
 connection = sqlite3.connect('database.db')
 cursor = connection.cursor()
 cursor.execute(''' CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT ,username TEXT, password TEXT )''')
+cursor.execute(''' INSERT INTO users (name, username, password) values (?,?,?)''',(name,username,password))
 connection.commit()
 connection.close()
 
